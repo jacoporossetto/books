@@ -1,0 +1,69 @@
+
+/* Stili per la modalità scanner */
+body.scanner-active {
+  background: transparent !important;
+}
+
+body.scanner-active .container,
+body.scanner-active .main-content {
+  visibility: hidden;
+}
+
+/* Overlay per il scanner */
+.scanner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.scanner-frame {
+  width: 250px;
+  height: 250px;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  position: relative;
+  background: transparent;
+}
+
+.scanner-frame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #00ff00;
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-125px); }
+  100% { transform: translateY(125px); }
+}
+
+/* Nasconde tutti gli elementi durante la scansione */
+body.barcode-scanner-active {
+  background-color: transparent;
+  visibility: hidden;
+}
+
+/* Mostra solo gli elementi che devono rimanere visibili durante la scansione */
+body.barcode-scanner-active .scanner-overlay,
+body.barcode-scanner-active .scanner-controls {
+  visibility: visible;
+}
+
+/* Se usi Ionic, aggiungi anche questo */
+body.barcode-scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+}
